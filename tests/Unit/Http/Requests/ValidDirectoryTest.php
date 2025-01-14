@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use App\Rules\ValidDirectory;
 use Exception;
 
-class ValidDirectoryTest extends AbstractFileTest
+class ValidDirectoryTest extends AbstractTestFile
 {
     public function testDirectoryExistsPasses(): void
     {

@@ -4,9 +4,9 @@ namespace Tests\Unit\Helpers;
 
 use App\Exceptions\InvalidPathException;
 use App\Helpers\NormalizedPathHelper;
-use Tests\Unit\AbstractFileTest;
+use Tests\Unit\AbstractTestFile;
 
-class NormalizedPathHelperTest extends AbstractFileTest
+class NormalizedPathHelperTest extends AbstractTestFile
 {
     /**
      * @throws InvalidPathException

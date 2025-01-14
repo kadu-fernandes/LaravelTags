@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-abstract class AbstractFileTest extends TestCase
+abstract class AbstractTestFile extends TestCase
 {
     protected function getTempDir(): string
     {
