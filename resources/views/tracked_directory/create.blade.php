@@ -1,17 +1,23 @@
 @extends('base')
 
+@section('title')
+    @lang('messages.tracked.directory.add.title')
+@endsection
+
 @section('content')
-    <h1>Add Tracked Directory</h1>
-    <form action="{{ route('tracked_directory.store') }}" method="POST">
-        @csrf
-        <label for="normalized_path">Directory Path:</label>
-        <input type="text" id="normalized_path" name="normalized_path" placeholder="Enter directory path" required>
-        <button type="submit" class="btn btn-sm btn-success">Add</button>
-        @if(isset($variable))
-            <a href="{{ route('tracked_directory.view', ['id' => $trackedDirectory->id]) }}"
-               class="btn btn-sm btn-primary">Cancel</a>
-        @else
-            <a href="{{ route('tracked_directory.index') }}" class="btn btn-sm btn-primary">Cancel</a>
-        @endif
-    </form>
+    <div class="container py-4">
+        <h1>@lang('messages.tracked.directory.add.title')</h1>
+        <form action="{{ route('tracked_directory.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="normalized_path" class="form-label">@lang('messages.shared.normalized_path')</label>
+                <input type="text" id="normalized_path" name="normalized_path" class="form-control"
+                       placeholder="Enter directory path" required>
+            </div>
+            <div class="mt-3">
+                @include('tracked_directory/buttons/save')
+                @include('tracked_directory/buttons/cancel')
+            </div>
+        </form>
+    </div>
 @endsection

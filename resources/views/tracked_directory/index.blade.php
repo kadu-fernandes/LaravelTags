@@ -1,26 +1,27 @@
 @extends('base')
 
 @section('title')
-    Tracked Directories
+    @lang('messages.tracked.directory.add.title')
 @endsection
 
 @section('content')
     <div class="container py-4">
-        <h1>Tracked Directories</h1>
-        <a href="{{ route('tracked_directory.create') }}" class="btn btn-sm btn-primary mb-3">Add Directory</a>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <h1>@lang('messages.tracked.directory.index.title')</h1>
+                <div>
+                    @include('tracked_directory/buttons/add')
+                </div>
+            </div>
+        </div>
         @include('validation_errors')
         <ul class="list-group">
             @foreach ($trackedDirectories as $trackedDirectory)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span>{{ $trackedDirectory->normalized_path }}</span>
                     <div>
-                        <a href="{{ route('tracked_directory.show', $trackedDirectory) }}" class="btn btn-sm btn-info">View</a>
-                        <form action="{{ route('tracked_directory.destroy', $trackedDirectory) }}" method="POST"
-                              style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                        </form>
+                        @include('tracked_directory/buttons/view')
+                        @include('tracked_directory/buttons/delete')
                     </div>
                 </li>
             @endforeach
