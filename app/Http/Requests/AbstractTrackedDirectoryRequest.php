@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueNormalizedPath;
 use App\Rules\ValidDirectory;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,6 +24,7 @@ class AbstractTrackedDirectoryRequest extends FormRequest
                 'required',
                 'string',
                 'max:512',
+                new UniqueNormalizedPath(),
                 new ValidDirectory(),
             ],
         ];
