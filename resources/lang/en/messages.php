@@ -6,24 +6,37 @@ return [
     ],
     'shared' => [
         'add' => 'Add',
-        'view' => 'View',
-        'delete' => 'Delete',
-        'cancel' => 'Cancel',
-        'normalized_path' => 'Normalized path',
         'back' => 'Back',
-        'save' => 'Save'
+        'cancel' => 'Cancel',
+        'delete' => 'Delete',
+        'normalized_path' => 'Normalized path',
+        'save' => 'Save',
+        'tag' => 'Tag',
+        'slug' => 'Slug',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'description' => 'Description',
+        'placeholder' => [
+            'directory_path' => '/path/to/the/directory',
+            'tag' => 'This is your tag',
+            'description' => 'This is your description.'
+        ],
     ],
     'tracked' => [
         'directory' => [
-            'add' => [
-                'title' => 'Tracked directory: Add'
+            'titles' => [
+                'add' => 'Tracked directory: Add',
+                'index' => 'Tracked tag',
+                'show' => 'Tracked directory: View',
             ],
-            'index' => [
-                'title' => 'Tracked directories'
+        ],
+        'tag' => [
+            'titles' => [
+                'add' => 'Tracked tag: Add',
+                'edit' => 'Tracked tag: Edit',
+                'index' => 'Tracked tag',
+                'show' => 'Tracked tag: View',
             ],
-            'show' => [
-                'title' => 'Tracked directory'
-            ]
-        ]
+        ],
     ],
 ];

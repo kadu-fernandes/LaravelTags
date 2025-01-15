@@ -1,4 +1,4 @@
-<form action="{{ route('tracked_directory.destroy', $trackedDirectory) }}"
+<form action="{{ route('tracked_tag.destroy', $trackedTag) }}"
       method="POST"
       class="d-inline-block mb-0">
     @csrf

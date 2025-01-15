@@ -1,14 +1,19 @@
 @extends('base')
 
 @section('title')
-    @lang('messages.tracked.directory.titles.index')
+    @lang('messages.tracked.tag.titles.add')
 @endsection
+
+@php
+    use League\CommonMark\CommonMarkConverter;
+    $converter = new CommonMarkConverter();
+@endphp
 
 @section('content')
     <div class="container py-4">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center">
-                <h1>@lang('messages.tracked.directory.titles.index')</h1>
+                <h1>@lang('messages.tracked.tag.titles.add')</h1>
             </div>
         </div>
         <div class="row">
@@ -17,10 +22,11 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Directory</th>
+                        <th scope="col">Tag</th>
+                        <th scope="col">Description</th>
                         <th scope="col">
                             <div class="d-flex justify-content-end align-items-center gap-2">
-                                @include('tracked_directory/buttons/add')
+                                @include('tracked_tag/buttons/add')
                             </div>
                         </th>
                     </tr>
@@ -28,19 +34,21 @@
                     <tbody>
                     @if ($errors->any())
                         <tr>
-                            <td colspan="3">
+                            <td colspan="4">
                                 @include('validation_errors')
                             </td>
                         </tr>
                     @endif
-                    @foreach ($trackedDirectories as $trackedDirectory)
+                    @foreach ($trackedTags as $trackedTag)
                         <tr>
-                            <th scope="row">{{ $trackedDirectory->id }}</th>
-                            <td class="ibm-plex-mono-regular">{{ $trackedDirectory->normalized_path }}</td>
+                            <th scope="row">{{ $trackedTag->id }}</th>
+                            <td>{{ $trackedTag->tag }}</td>
+                            <td class="markdown-content">{!! $converter->convert($trackedTag->description ?? '') !!}</td>
                             <td>
                                 <div class="d-flex justify-content-end align-items-center gap-2">
-                                    @include('tracked_directory/buttons/view')
-                                    @include('tracked_directory/buttons/delete')
+                                    @include('tracked_tag/buttons/view')
+                                    @include('tracked_tag/buttons/edit')
+                                    @include('tracked_tag/buttons/delete')
                                 </div>
                             </td>
                         </tr>

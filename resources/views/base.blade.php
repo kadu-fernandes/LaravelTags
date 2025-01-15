@@ -20,7 +20,7 @@
     <div class="row vh-100">
         <!-- Left Navigation Area -->
         <div class="col-2 bg-light d-flex flex-column">
-            <!-- Navigation content will go here -->
+            @include('left_menu')
         </div>
 
         <!-- Right Area -->

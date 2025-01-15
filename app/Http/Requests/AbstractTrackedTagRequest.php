@@ -21,7 +21,7 @@ class AbstractTrackedTagRequest
                 'required',
                 'string',
                 'max:512',
-                'unique'
+                'unique:tracked_tags,tag'
             ],
         ];
     }

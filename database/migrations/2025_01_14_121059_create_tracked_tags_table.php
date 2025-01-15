@@ -11,6 +11,7 @@ return new class () extends Migration {
             $table->id();
             $table->string(column: 'tag', length: 512)->nullable(false)->unique(true);
             $table->string(column: 'slug', length: 512)->nullable(false)->unique(true);
+            $table->text(column: 'description')->nullable(true);
             $table->timestamps();
         });
     }

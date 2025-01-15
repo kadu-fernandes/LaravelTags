@@ -6,19 +6,30 @@
 
 @section('content')
     <div class="container py-4">
+        <!-- Header Section -->
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center">
-                <h1>@lang('messages.tracked.directory.show.title')</h1>
-                <div class="d-flex align-items-center gap-2">
-                    @include('tracked_directory/buttons/delete')
-                    @include('tracked_directory/buttons/back')
-                </div>
+                <h1>@lang('messages.tracked.directory.titles.show')</h1>
             </div>
         </div>
 
+        <!-- Normalized Path -->
         <div class="row">
-            <div class="col-12 ">
-                <span class="ibm-plex-mono-regular ">{{ $trackedDirectory->normalized_path }}</span>
+            <div class="col-9">
+                <label for="normalized_path" class="form-label">@lang('messages.shared.normalized_path')</label>
+                <input type="text" class="form-control ibm-plex-mono-regular" id="normalized_path"
+                       value="{{ $trackedDirectory->normalized_path }}" disabled>
+            </div>
+            <div class="col-3">
+                &nbsp;
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end align-items-center gap-2 pt-3">
+                @include('tracked_directory/buttons/delete')
+                @include('tracked_directory/buttons/back')
             </div>
         </div>
     </div>
