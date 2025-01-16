@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\SlugHelper;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TrackedTag extends Model
 {
@@ -28,5 +29,10 @@ class TrackedTag extends Model
     {
         $this->attributes['tag'] = trim($value);
         $this->attributes['slug'] = SlugHelper::slugify(trim($value));
+    }
+
+    public function trackedFiles(): BelongsToMany
+    {
+        return $this->belongsToMany(TrackedFile::class, 'tracked_file_tracked_tag');
     }
 }
