@@ -39,4 +39,8 @@ return [
             ],
         ],
     ],
+    'validation' => [
+        'tracked_directory_not_exist' => 'The Directory does not exist!',
+        'tracked_file_not_a_children' => 'The File is not a children of the given directory!',
+    ],
 ];
