@@ -21,14 +21,31 @@ return [
             'tag' => 'This is your tag',
             'description' => 'This is your description.'
         ],
+        'errors' => [
+            '404' => [
+                'title' => 'Are you lost?'
+            ],
+            '500' => [
+                'title' => 'Something bad happened!'
+            ]
+        ]
     ],
     'tracked' => [
         'directory' => [
             'titles' => [
                 'add' => 'Tracked directory: Add',
-                'index' => 'Tracked tag',
+                'index' => 'Tracked directory',
                 'show' => 'Tracked directory: View',
             ],
+        ],
+        'file' => [
+            'titles' => [
+                'add' => 'Tracked file: Add',
+                'edit' => 'Tracked file: Edit',
+                'index' => 'Tracked file',
+                'show' => 'Tracked file: View',
+            ],
+
         ],
         'tag' => [
             'titles' => [

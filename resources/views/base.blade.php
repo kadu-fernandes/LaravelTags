@@ -14,6 +14,9 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Permanent+Marker&display=swap"
         rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        @yield('script_top')
+    </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -37,8 +40,7 @@
         </div>
     </div>
 </div>
-
-<!-- Bootstrap Bundle with Popper -->
+@yield('script_bottom')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

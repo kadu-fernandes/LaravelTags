@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\TrackedFileIsChildren;
+use App\Rules\ValidExtension;
+use App\Rules\ValidFile;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AbstractTrackedTagRequest extends FormRequest
+class AbstractTrackedFileRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -18,12 +21,16 @@ class AbstractTrackedTagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tag' => [
+            'normalized_path' => [
                 'required',
                 'string',
                 'max:512',
-                'unique:tracked_tags,tag'
+                'unique:tracked_files',
+                new TrackedFileIsChildren($this->input('tracked_directory_id')),
+                new ValidFile(),
+                new ValidExtension(),
             ],
+            'tracked_directory_id' => 'required|exists:tracked_directories,id',
         ];
     }
 }

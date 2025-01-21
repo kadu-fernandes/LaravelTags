@@ -64,4 +64,25 @@ class NormalizedPathHelperTest extends AbstractTestFile
 
         NormalizedPathHelper::normalizeFile($linkFile);
     }
+
+    /**
+     * @throws InvalidPathException
+     */
+    public function testAssertExtensionIsValid(): void
+    {
+        $tempFile = $this->getTempMarkdownFile();
+
+        NormalizedPathHelper::assertExtension($tempFile);
+
+        $this->assertTrue(true);
+    }
+
+    public function testAssertExtensionIsInvalid(): void
+    {
+        $tempFile = $this->getTempFile();
+
+        $this->expectException(InvalidPathException::class);
+
+        NormalizedPathHelper::assertExtension($tempFile);
+    }
 }

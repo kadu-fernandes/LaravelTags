@@ -38,7 +38,7 @@
                             <th scope="row">{{ $trackedDirectory->id }}</th>
                             <td class="ibm-plex-mono-regular">{{ $trackedDirectory->normalized_path }}</td>
                             <td>
-                                <div class="d-flex justify-content-end align-items-center gap-2">
+                                <div class="d-flex justify-content-end align-items-center align-items-end gap-2">
                                     @include('tracked_directory/buttons/view')
                                     @include('tracked_directory/buttons/delete')
                                 </div>

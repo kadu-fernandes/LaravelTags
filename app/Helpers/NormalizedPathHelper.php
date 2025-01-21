@@ -6,6 +6,23 @@ use App\Exceptions\InvalidPathException;
 
 class NormalizedPathHelper
 {
+    public const VALID_EXTENSIONS = [
+        'doc' => 'fa-solid fa-file-word',
+        'docx' => 'fa-solid fa-file-word',
+        'md' => 'fa-regular fa-file-lines',
+        'odp' => 'fa-regular fa-file-powerpoint',
+        'odt' => 'fa-regular fa-file-word',
+        'ppt' => 'fa-solid fa-file-powerpoint',
+        'pptx' => 'fa-solid fa-file-powerpoint',
+        'csv' => 'fa-solid fa-file-csv',
+        'rtf' => 'fa-solid fa-file-invoice',
+        'tex' => 'fa-regular fa-file-lines',
+        'txt' => 'fa-solid fa-file-lines',
+        'xls' => 'fa-solid fa-file-excel',
+        'xlsx' => 'fa-solid fa-file-excel',
+        'pdf' => 'fa-solid fa-file-pdf',
+    ];
+
     /**
      * @throws InvalidPathException
      */
@@ -47,6 +64,17 @@ class NormalizedPathHelper
         return $path;
     }
 
+    public static function getExtension(string $path): string
+    {
+        try {
+            $pathInfo = pathinfo(static::normalizeFile($path));
+
+            return $pathInfo['extension'];
+        } catch (InvalidPathException $ex) {
+            return '';
+        }
+    }
+
     /**
      * @throws InvalidPathException
      */
@@ -74,6 +102,24 @@ class NormalizedPathHelper
     {
         if (!is_file($path)) {
             throw new InvalidPathException('The path is not a file!');
+        }
+    }
+
+    /**
+     * @throws InvalidPathException
+     */
+    public static function assertExtension(string $path): void
+    {
+        static::assertIsFile($path);
+        $pathInfo = pathinfo(trim($path));
+        $extension = $pathInfo['extension'];
+
+        if (!ctype_lower($extension) || !preg_match('/[a-z]/', $extension)) {
+            throw new InvalidPathException('The file extension must be in lower case!');
+        }
+
+        if (!in_array($extension, array_keys(static::VALID_EXTENSIONS))) {
+            throw new InvalidPathException('The file extension is not allowed!');
         }
     }
 }

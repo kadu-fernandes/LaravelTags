@@ -36,13 +36,22 @@ abstract class AbstractTestFile extends TestCase
 
     protected function cleanFiles(): void
     {
-        $files = glob($this->getTempDir() . DIRECTORY_SEPARATOR . '*.tf');
+        foreach (['*.tf', '*.md'] as $extension) {
+            $files = glob($this->getTempDir() . DIRECTORY_SEPARATOR . $extension);
 
-        foreach ($files as $file) {
-            if (is_file($file) || is_link($file)) {
-                unlink($file);
+            foreach ($files as $file) {
+                if (is_file($file) || is_link($file)) {
+                    unlink($file);
+                }
             }
         }
     }
 
+    protected function getTempMarkdownFile(): string
+    {
+        $file = $this->getTempDir() . DIRECTORY_SEPARATOR . uniqid('tm_') . '.md';
+        touch($file);
+
+        return $file;
+    }
 }

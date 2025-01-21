@@ -13,13 +13,19 @@
                     <a href="{{ route('tracked_directory.index') }}"
                        class="list-group-item list-group-item-action {{ request()->routeIs('tracked_directory.*') ? 'active' : '' }}"
                        aria-current="{{ request()->routeIs('tracked_directory.*') ? 'true' : 'false' }}">
-                        Tracked Directories
+                        @lang('messages.tracked.directory.titles.index')
+                    </a>
+                    <!-- Tracked Files -->
+                    <a href="{{ route('tracked_file.index') }}"
+                       class="list-group-item list-group-item-action {{ request()->routeIs('tracked_file.*') ? 'active' : '' }}"
+                       aria-current="{{ request()->routeIs('tracked_file.*') ? 'true' : 'false' }}">
+                        @lang('messages.tracked.file.titles.index')
                     </a>
                     <!-- Tracked Tags -->
                     <a href="{{ route('tracked_tag.index') }}"
                        class="list-group-item list-group-item-action {{ request()->routeIs('tracked_tag.*') ? 'active' : '' }}"
                        aria-current="{{ request()->routeIs('tracked_tag.*') ? 'true' : 'false' }}">
-                        Tracked Tags
+                        @lang('messages.tracked.tag.titles.index')
                     </a>
                 </div>
             </div>

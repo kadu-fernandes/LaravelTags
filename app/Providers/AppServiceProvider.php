@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\TrackedTagRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +12,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(TrackedTagRepository::class, function () {
+            return new TrackedTagRepository();
+        });
     }
 
     /**
@@ -19,6 +22,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
     }
 }
