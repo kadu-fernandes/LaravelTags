@@ -17,6 +17,6 @@ class FileTagsController extends Controller
         $foundTags = $this->trackedTagRepository->findTags($trackedFile);
         $tags = $this->trackedTagRepository->findTagsNotAssignedToFile($trackedFile);
 
-        return view('file_tags.index');
+        return view('file_tags.index', compact('trackedFile', 'foundTags', 'tags'));
     }
 }

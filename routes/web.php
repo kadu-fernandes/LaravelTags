@@ -57,12 +57,12 @@ Route::get('/tracked/file/directory/{trackedDirectory}/create', [TrackedFileCont
     ->name('tracked_file.create')
     ->whereNumber('trackedDirectory');
 
-Route::post('/tracked/file/{trackedFile}/tag/{trackedTag}', [TrackedFileController::class, 'addTag'])
+Route::get('/tracked/file/{trackedFile}/tag/{trackedTag}/add', [TrackedFileController::class, 'addTag'])
     ->name('tracked_file.add_tag')
     ->whereNumber('trackedFile')
     ->whereNumber('trackedTag');
 
-Route::delete('/tracked/file/{trackedFile}/tag/{trackedTag}', [TrackedFileController::class, 'removeTag'])
+Route::get('/tracked/file/{trackedFile}/tag/{trackedTag}/remove', [TrackedFileController::class, 'removeTag'])
     ->name('tracked_file.remove_tag')
     ->whereNumber('trackedFile')
     ->whereNumber('trackedTag');

@@ -13,7 +13,7 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center">
-                <h1>@lang('messages.tracked.tag.titles.add')</h1>
+                <h1>@lang('messages.tracked.tag.titles.index')</h1>
             </div>
         </div>
         <div class="row">

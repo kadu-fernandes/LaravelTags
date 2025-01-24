@@ -45,6 +45,9 @@ return [
                 'index' => 'Tracked file',
                 'show' => 'Tracked file: View',
             ],
+            'buttons' => [
+                'tags' => 'Tags'
+            ]
 
         ],
         'tag' => [
@@ -55,6 +58,9 @@ return [
                 'show' => 'Tracked tag: View',
             ],
         ],
+    ],
+    'file_tags' => [
+        'title' => 'Tag file'
     ],
     'validation' => [
         'tracked_directory_not_exist' => 'The Directory does not exist!',

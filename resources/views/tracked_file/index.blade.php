@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')
-    @lang('messages.tracked.file.titles.add')
+    @lang('messages.tracked.file.titles.index')
 @endsection
 
 @section('script_bottom')
@@ -40,18 +40,18 @@
     </script>
 @endsection
 
-
 @section('content')
     <div class="container py-4">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center">
-                <h1>@lang('messages.tracked.file.titles.add')</h1>
+                <h1>@lang('messages.tracked.file.titles.index')</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-end align-items-center gap-2">
                     <div></div>
+                    \
                     <form id="directoryForm">
                         <label for="directory">Filter by Directory:</label>
                         <select id="directory" class="form-control">
@@ -104,10 +104,14 @@
                                 @endif
                             </td>
                             <td>
-                                @iconForFile($trackedFile->normalized_path){{ $trackedFile->normalized_path }}</td>
+                                <span class="ibm-plex-mono-regular">
+                                    @iconForFile($trackedFile->normalized_path) {{ $trackedFile->normalized_path }}
+                                </span>
+                            </td>
                             <td>
                                 <div class="d-flex justify-content-end align-items-center gap-2">
                                     @include('tracked_file/buttons/view')
+                                    @include('tracked_file/buttons/tags')
                                     @include('tracked_file/buttons/delete')
                                 </div>
                             </td>
