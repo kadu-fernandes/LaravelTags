@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\FileTagsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\TrackedDirectoryController;
 use App\Http\Controllers\TrackedFileController;
@@ -67,6 +66,6 @@ Route::get('/tracked/file/{trackedFile}/tag/{trackedTag}/remove', [TrackedFileCo
     ->whereNumber('trackedFile')
     ->whereNumber('trackedTag');
 
-Route::get('/tracked/file/tag/{trackedFile}', [FileTagsController::class, 'index'])
+Route::get('/tracked/file/tag/{trackedFile}/handle', [TrackedFileController::class, 'handleTags'])
     ->name('file_tag.index')
     ->whereNumber('trackedFile');

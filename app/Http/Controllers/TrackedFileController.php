@@ -7,11 +7,16 @@ use App\Http\Requests\UpdateTrackedFileRequest;
 use App\Models\TrackedDirectory;
 use App\Models\TrackedFile;
 use App\Models\TrackedTag;
+use App\Repositories\TrackedTagRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class TrackedFileController extends Controller
 {
+    public function __construct(private readonly TrackedTagRepository $trackedTagRepository)
+    {
+    }
+
     public function index(?TrackedDirectory $trackedDirectory = null): View
     {
         $directories = TrackedDirectory::all();
@@ -59,6 +64,14 @@ class TrackedFileController extends Controller
         $trackedFile->delete();
 
         return redirect()->route('tracked_file.index');
+    }
+
+    public function handleTags(TrackedFile $trackedFile): View
+    {
+        $foundTags = $this->trackedTagRepository->findTags($trackedFile);
+        $tags = $this->trackedTagRepository->findTagsNotAssignedToFile($trackedFile);
+
+        return view('tracked_file.handle', compact('trackedFile', 'foundTags', 'tags'));
     }
 
     public function addTag(TrackedFile $trackedFile, TrackedTag $trackedTag): RedirectResponse
